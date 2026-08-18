@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Engineering College Admission Analytics &amp; Decision Platform</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <i class="fa-solid fa-graduation-cap brand-icon"></i>
+        <div class="brand-text">
+          <span class="brand-title">EduAnalytics AI</span>
+          <span class="brand-subtitle">Engineering Admission Decision Platform</span>
+        </div>
+      </div>
+
+      <div class="nav-status-badge">
+        <span class="status-dot"></span>
+        <span class="status-text">Data Pipeline &amp; ML Engines Online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Secondary Tab Navigation Bar -->
+  <nav class="tab-nav">
+    <div class="tab-container">
+      <button class="tab-btn active" data-tab="tab-karnataka"><i class="fa-solid fa-graduation-cap text-accent"></i> Karnataka Guide &amp; Scholarships</button>
+      <button class="tab-btn" data-tab="tab-landing"><i class="fa-solid fa-compass"></i> Problem &amp; Flow</button>
+      <button class="tab-btn" data-tab="tab-data-quality"><i class="fa-solid fa-broom"></i> Data Quality &amp; ETL</button>
+      <button class="tab-btn" data-tab="tab-eda"><i class="fa-solid fa-chart-pie"></i> EDA &amp; Insights</button>
+      <button class="tab-btn" data-tab="tab-sql"><i class="fa-solid fa-database"></i> SQL Analytics</button>
+      <button class="tab-btn" data-tab="tab-dashboard"><i class="fa-solid fa-chart-line"></i> Executive Dashboard</button>
+      <button class="tab-btn" data-tab="tab-ml"><i class="fa-solid fa-brain"></i> Feature Eng &amp; ML</button>
+      <button class="tab-btn" data-tab="tab-predict"><i class="fa-solid fa-bullseye"></i> Admission Predictor</button>
+      <button class="tab-btn" data-tab="tab-recommend"><i class="fa-solid fa-award"></i> Hybrid Recs</button>
+      <button class="tab-btn" data-tab="tab-rag"><i class="fa-solid fa-robot"></i> RAG &amp; AI Assistant</button>
+      <button class="tab-btn" data-tab="tab-multimodal"><i class="fa-solid fa-wand-magic-sparkles"></i> Multimodal AI</button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- KARNATAKA ADMISSION GUIDE & SCHOLARSHIP ASSISTANT TAB (ACTIVE BY DEFAULT) -->
+    <section id="tab-karnataka" class="tab-pane active">
+      <div class="hero-card margin-bottom-sm">
+        <div class="hero-content">
+          <span class="hero-pill"><i class="fa-solid fa-location-dot"></i> Dedicated Karnataka KEA / COMEDK Module</span>
+          <h1 class="hero-title">Karnataka Engineering Admission Guide &amp; Scholarship Assistant</h1>
+          <p class="hero-desc">
+            Complete decision support for Karnataka 12th students: KCET vs COMEDK seat rank estimator, fee waivers (TFW), SSP Post-Matric fee reimbursement, Vidyasiri hostel allowances, and college rankings for RVCE, BMSCE, MSRIT, PESU, NITK, UVCE &amp; SJCE.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2col margin-top">
+        <!-- Module A: Scholarship & Fee Concession Calculator -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-hand-holding-dollar text-accent"></i> SSP &amp; AICTE Fee Concession Calculator</h3>
+          </div>
+          <div class="card-body">
+            <form id="form-karnataka-scholarship">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label>Candidate Category</label>
+                  <select id="kar-category">
+                    <option value="General">General / Unreserved</option>
+                    <option value="2A">Category 2A</option>
+                    <option value="2B">Category 2B</option>
+                    <option value="3A">Category 3A</option>
+                    <option value="3B">Category 3B</option>
+                    <option value="SC">SC (Scheduled Caste)</option>
+                    <option value="ST">ST (Scheduled Tribe)</option>
+                    <option value="Cat-1">Category-1</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Family Annual Income (Lakhs)</label>
+                  <input type="number" id="kar-income" value="1.8" step="0.5" required>
+                </div>
+                <div class="form-group">
+                  <label>KCET Rank</label>
+                  <input type="number" id="kar-rank" value="4500" required>
+                </div>
+                <div class="form-group">
+                  <label>Annual Tuition Fee (INR)</label>
+                  <input type="number" id="kar-fee" value="112000" required>
+                </div>
+              </div>
+
+              <div class="margin-top" style="display:flex; gap:16px;">
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" id="kar-kannada-med"> Rural / Kannada Medium Quota
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full margin-top"><i class="fa-solid fa-calculator"></i> Calculate Eligible Karnataka Scholarships</button>
+            </form>
+
+            <div class="margin-top" id="kar-scholarship-results">
+              <!-- Output rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Module B: KCET / COMEDK College Match Finder -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-building-columns text-accent"></i> Karnataka Top Engineering Colleges Finder</h3>
+          </div>
+          <div class="card-body">
+            <form id="form-karnataka-guide">
+              <div class="form-group margin-bottom-sm">
+                <label><i class="fa-solid fa-magnifying-glass text-accent"></i> Search College Name, Short Name, or KEA CET / COMEDK Code</label>
+                <input type="text" id="kar-search-query" placeholder="e.g. RVCE, BMSCE, MSRIT, PESU, E001, E003, E005, E045, Dayananda Sagar, BMSIT">
+              </div>
+
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label>Entrance Exam Quota</label>
+                  <select id="kar-exam">
+                    <option value="KCET">KCET (KEA State Govt Quota)</option>
+                    <option value="COMEDK">COMEDK (Private Quota)</option>
+                    <option value="Management">Management Quota</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Entrance Rank</label>
+                  <input type="number" id="kar-exam-rank" value="2500" required>
+                </div>
+                <div class="form-group">
+                  <label>Category</label>
+                  <select id="kar-exam-cat">
+                    <option value="General">General</option>
+                    <option value="2A">Category 2A</option>
+                    <option value="2B">Category 2B</option>
+                    <option value="3A">Category 3A</option>
+                    <option value="3B">Category 3B</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Max Annual Tuition Budget (Lakhs)</label>
+                  <input type="number" id="kar-max-budget" value="5.0" step="0.5" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-accent btn-full margin-top"><i class="fa-solid fa-magnifying-glass"></i> Search &amp; Filter Colleges</button>
+            </form>
+
+            <div class="margin-top" id="kar-colleges-results">
+              <!-- Output rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. LANDING & BUSINESS PROBLEM TAB -->
+    <section id="tab-landing" class="tab-pane">
+      <div class="hero-card">
+        <div class="hero-content">
+          <span class="hero-pill"><i class="fa-solid fa-shield-halved"></i> Analytics-First Decision Architecture</span>
+          <h1 class="hero-title">AI-Powered Engineering College Admission Analytics Platform</h1>
+          <p class="hero-desc">
+            Empowering 12th-grade engineering aspirants with empirical data analytics, SQL intelligence, Machine Learning admission probability estimates, transparent recommendations, source-grounded RAG, and multimodal GenAI decision support.
+          </p>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <i class="fa-solid fa-database highlight-icon"></i>
+              <div>
+                <h4>120+ Top Engineering Colleges</h4>
+                <p>IITs, NITs, IIITs, BITS &amp; Top State Institutes (2021–2025)</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-calculator highlight-icon"></i>
+              <div>
+                <h4>SQL &amp; ETL Data Engine</h4>
+                <p>PostgreSQL/SQLite queries with CTEs &amp; Window Functions</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-network-wired highlight-icon"></i>
+              <div>
+                <h4>ML Admission Predictor</h4>
+                <p>Logistic Reg, Random Forest, Gradient Boosting &amp; ANN</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline Architecture Flow Diagram -->
+      <div class="card margin-top">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-diagram-project"></i> Primary Project Positioning &amp; End-to-End Pipeline</h3>
+        </div>
+        <div class="card-body">
+          <div class="pipeline-wrapper">
+            <div class="pipe-step"><i class="fa-solid fa-file-csv"></i><span>Raw Data</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-filter"></i><span>ETL &amp; Cleaning</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-chart-column"></i><span>EDA &amp; Trends</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-database"></i><span>SQL Analytics</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-sliders"></i><span>Feature Eng</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-microchip"></i><span>ML Probability</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-thumbs-up"></i><span>Explainable Recs</span></div>
+            <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="pipe-step"><i class="fa-solid fa-book-bookmark"></i><span>RAG &amp; GenAI</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. DATA QUALITY & ETL INSPECTOR TAB -->
+    <section id="tab-data-quality" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-broom"></i> Data Quality &amp; ETL Pipeline Health</h2>
+        <p>Real data cleaning, deduplication, missing value treatment, outlier detection, and health metric tracking.</p>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card accent-cyan">
+          <span class="kpi-label">Dataset Health Score</span>
+          <span class="kpi-value" id="dq-health-score">--%</span>
+          <span class="kpi-sub">Validation &amp; Integrity Metric</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Raw Records Extracted</span>
+          <span class="kpi-value" id="dq-raw-records">--</span>
+          <span class="kpi-sub">Initial CSV Input</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Duplicates Removed</span>
+          <span class="kpi-value" id="dq-duplicates">--</span>
+          <span class="kpi-sub">Exact &amp; Short Key Matches</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Missing Values Treated</span>
+          <span class="kpi-value" id="dq-missing">--</span>
+          <span class="kpi-sub">Group Median Imputed</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Outliers Detected</span>
+          <span class="kpi-value" id="dq-outliers">--</span>
+          <span class="kpi-sub">IQR 2.5x Bound Trimming</span>
+        </div>
+      </div>
+
+      <div class="card margin-top">
+        <div class="card-header flex-between">
+          <h3><i class="fa-solid fa-table-list"></i> ETL Data Transformation Pipeline Summary</h3>
+          <button class="btn btn-primary btn-sm" id="btn-trigger-etl"><i class="fa-solid fa-rotate"></i> Re-Run ETL Pipeline</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Pipeline Stage</th>
+                  <th>Operation Applied</th>
+                  <th>Raw State</th>
+                  <th>Cleaned State</th>
+                  <th>Impact / Benefit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. Extraction</td>
+                  <td>Load CSV datasets from source repository</td>
+                  <td>135 raw college records</td>
+                  <td>120 unique colleges</td>
+                  <td>Removes erroneous duplicate ingestion</td>
+                </tr>
+                <tr>
+                  <td>2. Text Standardization</td>
+                  <td>Strip whitespace, title case city names &amp; categories</td>
+                  <td>"  BENGALURU ", "mumbai"</td>
+                  <td>"Bengaluru", "Mumbai"</td>
+                  <td>Ensures accurate SQL GROUP BY aggregations</td>
+                </tr>
+                <tr>
+                  <td>3. Missing Value Imputation</td>
+                  <td>Impute missing fees &amp; packages using Tier Medians</td>
+                  <td>12 NaN fees, 8 NaN packages</td>
+                  <td>0 missing values remaining</td>
+                  <td>Prevents ML feature vector corruption</td>
+                </tr>
+                <tr>
+                  <td>4. Outlier Trimming</td>
+                  <td>Detect IQR bounds on tuition fees &amp; packages</td>
+                  <td>INR 99.9L fee outlier</td>
+                  <td>Normalized to Tier median</td>
+                  <td>Prevents model regression skew</td>
+                </tr>
+                <tr>
+                  <td>5. Database Loading</td>
+                  <td>Ingest into SQLite relational analytical schema</td>
+                  <td>Flat CSV files</td>
+                  <td>Indexed relational tables</td>
+                  <td>Enables fast CTE &amp; Window function queries</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. EDA & VISUAL INSIGHTS TAB -->
+    <section id="tab-eda" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-chart-pie"></i> Exploratory Data Analysis &amp; Analytical Insights</h2>
+        <p>Answering strategic questions using empirical admission data: Question → Analysis → Insight → Business Implication</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Chart 1: Cutoff Trends YoY -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-chart-line"></i> YoY Cutoff Rank Shift (2021–2025)</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-cutoff-trends"></canvas>
+            </div>
+            <div class="insight-box">
+              <strong>Question:</strong> How have closing ranks shifted across engineering branches?<br>
+              <strong>Insight:</strong> CSE and AI/DS cutoffs tightened by 18%, reflecting high tech demand.<br>
+              <span class="text-accent">Business Implication:</span> Mid-tier rank students must evaluate spot rounds or secondary tech branches.
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 2: Fee vs Placement Scatter -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-money-bill-trend-up"></i> Annual Fee vs Average Placement (LPA)</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-fee-placement"></canvas>
+            </div>
+            <div class="insight-box">
+              <strong>Question:</strong> What is the relationship between tuition fees and placement packages?<br>
+              <strong>Insight:</strong> Tier 1 public institutes offer 3x higher placement packages at 50% lower tuition fees.<br>
+              <span class="text-accent">Business Implication:</span> Target public Tier 1 institutions for optimal financial ROI.
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 3: Branch Demand & Seats -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-layer-group"></i> Branch Seat Capacity &amp; Cutoff Competitiveness</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-branch-demand"></canvas>
+            </div>
+            <div class="insight-box">
+              <strong>Question:</strong> Which branches attract the highest rank applicants?<br>
+              <strong>Insight:</strong> CSE and AI/DS comprise 62% of high-rank choices.<br>
+              <span class="text-accent">Business Implication:</span> Expanding AI/DS branch seats directly boosts college entrance cutoffs.
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 4: Location Distribution -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-map-location-dot"></i> State-Wise College Concentration &amp; Placements</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-location-dist"></canvas>
+            </div>
+            <div class="insight-box">
+              <strong>Question:</strong> How are premier colleges distributed geographically?<br>
+              <strong>Insight:</strong> Karnataka, Tamil Nadu, and Maharashtra host 48% of top technical institutes.<br>
+              <span class="text-accent">Business Implication:</span> Metro tech hub proximity correlates with higher off-campus hiring opportunities.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SQL ANALYTICS TAB -->
+    <section id="tab-sql" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-database"></i> Structured SQL Analytics &amp; Query Runner</h2>
+        <p>Executing complex queries with CTEs, Window Functions (RANK, DENSE_RANK), JOINs, and CASE statements.</p>
+      </div>
+
+      <div class="grid-sql">
+        <!-- Sidebar Questions List -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-list-check"></i> Business Analytics Questions</h3>
+          </div>
+          <div class="card-body padding-sm">
+            <div class="sql-questions-list" id="sql-questions-list">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Query & Results Console -->
+        <div class="sql-main-panel">
+          <div class="card">
+            <div class="card-header flex-between">
+              <h3><i class="fa-solid fa-code"></i> Active SQL Query Console</h3>
+              <button class="btn btn-accent btn-sm" id="btn-run-custom-sql"><i class="fa-solid fa-play"></i> Execute Query</button>
+            </div>
+            <div class="card-body">
+              <div class="sql-editor-container">
+                <textarea id="sql-editor" rows="7" placeholder="SELECT * FROM colleges LIMIT 10;"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Insight Box -->
+          <div class="insight-alert" id="sql-insight-box">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span id="sql-insight-text">Select a business question from the left sidebar to execute the query and view automated analytics insights.</span>
+          </div>
+
+          <!-- Query Results Grid -->
+          <div class="card margin-top">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-table"></i> Query Execution Output</h3>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive" id="sql-results-table-container">
+                <p class="placeholder-text">Execute a query to display results.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. EXECUTIVE DASHBOARD TAB -->
+    <section id="tab-dashboard" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-chart-line"></i> Executive Analytics Dashboard</h2>
+        <p>Interactive filterable BI dashboard providing strategic indicators for institutional benchmarking.</p>
+      </div>
+
+      <!-- Filters Panel -->
+      <div class="filter-panel">
+        <div class="filter-group">
+          <label>Tier</label>
+          <select id="filter-tier">
+            <option value="">All Tiers</option>
+            <option value="Tier 1">Tier 1 (IIT/NIT/BITS)</option>
+            <option value="Tier 2">Tier 2 (Top State/Pvt)</option>
+            <option value="Tier 3">Tier 3 (Regional)</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>State</label>
+          <select id="filter-state">
+            <option value="">All States</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Max Annual Fee (Lakhs)</label>
+          <input type="number" id="filter-max-fee" placeholder="e.g. 4.0" step="0.5">
+        </div>
+        <div class="filter-group">
+          <label>Min Placement (LPA)</label>
+          <input type="number" id="filter-min-placement" placeholder="e.g. 10.0" step="1.0">
+        </div>
+        <div class="filter-group filter-btn-group">
+          <button class="btn btn-primary" id="btn-apply-filters"><i class="fa-solid fa-filter"></i> Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- Executive KPIs -->
+      <div class="kpi-grid margin-top">
+        <div class="kpi-card accent-indigo">
+          <span class="kpi-label">Total Engineering Colleges</span>
+          <span class="kpi-value" id="kpi-total-colleges">120</span>
+          <span class="kpi-sub">Across 12 Indian States</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Average Annual Tuition</span>
+          <span class="kpi-value" id="kpi-avg-fee">INR 2.45L</span>
+          <span class="kpi-sub">Median: INR 2.10L</span>
+        </div>
+        <div class="kpi-card accent-green">
+          <span class="kpi-label">Average Placement Package</span>
+          <span class="kpi-value" id="kpi-avg-placement">14.8 LPA</span>
+          <span class="kpi-sub">Highest: 1.35 Cr</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Average Round 1 Cutoff</span>
+          <span class="kpi-value" id="kpi-avg-cutoff">#12,450</span>
+          <span class="kpi-sub">General Category CRL</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Highest ROI Winner</span>
+          <span class="kpi-value" id="kpi-best-roi" style="font-size: 1.2rem;">Jadavpur Univ</span>
+          <span class="kpi-sub">40.5x Fee-Placement Ratio</span>
+        </div>
+      </div>
+
+      <!-- College Data Grid -->
+      <div class="card margin-top">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-building-columns"></i> College Benchmark Master Grid</h3>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="data-table" id="dashboard-colleges-table">
+              <thead>
+                <tr>
+                  <th>NIRF</th>
+                  <th>College Name</th>
+                  <th>City, State</th>
+                  <th>Tier</th>
+                  <th>Annual Fee</th>
+                  <th>Hostel Fee</th>
+                  <th>Avg Package</th>
+                  <th>Placement %</th>
+                  <th>Accreditation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FEATURE ENGINEERING & ML MODEL COMPARISON TAB -->
+    <section id="tab-ml" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-brain"></i> Feature Engineering &amp; ML Model Evaluation</h2>
+        <p>Comparing Logistic Regression, Random Forest, Gradient Boosting, and Artificial Neural Network (ANN) models.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Model Metrics Table -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-trophy"></i> Supervised Admission Model Benchmark</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="data-table" id="ml-metrics-table">
+                <thead>
+                  <tr>
+                    <th>Model Architecture</th>
+                    <th>Accuracy</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1 Score</th>
+                    <th>ROC-AUC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Importance Chart -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-chart-bar"></i> Feature Importance (Random Forest)</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-feature-importance"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model Monitoring Metadata -->
+      <div class="card margin-top">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-server"></i> Model Monitoring &amp; Lineage Metadata</h3>
+        </div>
+        <div class="card-body">
+          <div class="metadata-grid" id="ml-metadata-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ADMISSION PROBABILITY PREDICTOR TAB -->
+    <section id="tab-predict" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-bullseye"></i> ML Admission Probability Predictor</h2>
+        <p>Estimate student admission probability using trained supervised machine learning models.</p>
+      </div>
+
+      <div class="grid-predict">
+        <!-- Form Panel -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-user-pen"></i> Student &amp; College Metrics</h3>
+          </div>
+          <div class="card-body">
+            <form id="form-predict">
+              <div class="form-group">
+                <label>Your Entrance Rank (CRL)</label>
+                <input type="number" id="pred-rank" value="4500" required>
+              </div>
+              <div class="form-group">
+                <label>College Round 1 Closing Rank</label>
+                <input type="number" id="pred-closing" value="6000" required>
+              </div>
+              <div class="form-group">
+                <label>Your Annual Budget (INR Lakhs)</label>
+                <input type="number" id="pred-budget" value="3.5" step="0.1" required>
+              </div>
+              <div class="form-group">
+                <label>College Annual Tuition Fee (INR Lakhs)</label>
+                <input type="number" id="pred-fee" value="2.2" step="0.1" required>
+              </div>
+              <div class="form-group">
+                <label>College Average Package (LPA)</label>
+                <input type="number" id="pred-placement" value="16.5" step="0.5" required>
+              </div>
+              <div class="form-group">
+                <label>Institutional Tier</label>
+                <select id="pred-tier">
+                  <option value="Tier 1">Tier 1 (IIT/NIT/BITS)</option>
+                  <option value="Tier 2">Tier 2 (Top State/Pvt)</option>
+                  <option value="Tier 3">Tier 3 (Regional)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Model Architecture</label>
+                <select id="pred-model">
+                  <option value="Gradient Boosting">Hist Gradient Boosting (Recommended)</option>
+                  <option value="Random Forest">Random Forest Classifier</option>
+                  <option value="Logistic Regression">Logistic Regression</option>
+                  <option value="Artificial Neural Network (ANN)">Artificial Neural Network (ANN)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full margin-top"><i class="fa-solid fa-calculator"></i> Predict Admission Probability</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Output Result Panel -->
+        <div class="card" id="predict-result-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-square-poll-vertical"></i> Probability Prediction Output</h3>
+          </div>
+          <div class="card-body text-center">
+            <div class="prob-gauge-wrapper">
+              <div class="prob-circle" id="prob-circle-display">
+                <span id="prob-percentage">--%</span>
+              </div>
+              <p class="prob-label" id="prob-classification">Submit form to compute ML estimate</p>
+            </div>
+
+            <div class="prob-details-grid margin-top">
+              <div class="prob-detail-item">
+                <span class="detail-name">Rank Gap</span>
+                <span class="detail-val" id="res-rank-gap">--</span>
+              </div>
+              <div class="prob-detail-item">
+                <span class="detail-name">Rank Fit Index</span>
+                <span class="detail-val" id="res-rank-fit">--</span>
+              </div>
+              <div class="prob-detail-item">
+                <span class="detail-name">Budget Ratio</span>
+                <span class="detail-val" id="res-fee-aff">--</span>
+              </div>
+              <div class="prob-detail-item">
+                <span class="detail-name">Model Selected</span>
+                <span class="detail-val" id="res-model-used">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. HYBRID RECOMMENDATION ENGINE TAB -->
+    <section id="tab-recommend" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-award"></i> Explainable Hybrid Recommendation Engine</h2>
+        <p>Combines ML Admission Probability, Budget Compatibility, Placement ROI, Branch Match &amp; Location Preference.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-sliders"></i> Student Profile &amp; Decision Criteria</h3>
+        </div>
+        <div class="card-body">
+          <form id="form-recommend" class="grid-4col">
+            <div class="form-group">
+              <label>Entrance Rank</label>
+              <input type="number" id="rec-rank" value="4500" required>
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="rec-category">
+                <option value="General">General (CRL)</option>
+                <option value="OBC">OBC-NCL</option>
+                <option value="EWS">EWS</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Branch</label>
+              <select id="rec-branch">
+                <option value="CSE">Computer Science (CSE)</option>
+                <option value="AI_DS">AI &amp; Data Science</option>
+                <option value="ECE">Electronics (ECE)</option>
+                <option value="IT">Information Tech (IT)</option>
+                <option value="EEE">Electrical (EEE)</option>
+                <option value="ME">Mechanical (ME)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Max Annual Budget (Lakhs)</label>
+              <input type="number" id="rec-budget" value="4.0" step="0.5" required>
+            </div>
+            <div class="form-group span-4">
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Explainable Recommendations</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="margin-top">
+        <h3 class="margin-bottom-sm"><i class="fa-solid fa-star text-accent"></i> Top Recommended Colleges</h3>
+        <div class="recs-grid" id="recs-results-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. RAG & AI ASSISTANT TAB -->
+    <section id="tab-rag" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-robot"></i> Source-Grounded RAG &amp; Natural Language AI Assistant</h2>
+        <p>Ask admission questions grounded on official JoSAA guidelines, KEA fee structures, and audited placement reports.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Chat Console -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-comments"></i> AI Decision Assistant</h3>
+          </div>
+          <div class="card-body flex-column">
+            <div class="chat-history" id="chat-history-box">
+              <div class="chat-msg bot">
+          </div>
+        </div>
+
+        <!-- Feature Importance Chart -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-chart-bar"></i> Feature Importance (Random Forest)</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-feature-importance"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model Monitoring Metadata -->
+      <div class="card margin-top">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-server"></i> Model Monitoring &amp; Lineage Metadata</h3>
+        </div>
+        <div class="card-body">
+          <div class="metadata-grid" id="ml-metadata-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ADMISSION PROBABILITY PREDICTOR TAB -->
+    <section id="tab-predict" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-bullseye"></i> ML Admission Probability Predictor</h2>
+        <p>Estimate student admission probability using trained supervised machine learning models.</p>
+      </div>
+
+      <div class="grid-predict">
+        <!-- Form Panel -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-user-pen"></i> Student &amp; College Metrics</h3>
+          </div>
+          <div class="card-body">
+            <form id="form-predict">
+              <div class="form-group">
+                <label>Your Entrance Rank (CRL)</label>
+                <input type="number" id="pred-rank" value="4500" required>
+              </div>
+              <div class="form-group">
+                <label>College Round 1 Closing Rank</label>
+                <input type="number" id="pred-closing" value="6000" required>
+              </div>
+              <div class="form-group">
+                <label>Your Annual Budget (INR Lakhs)</label>
+                <input type="number" id="pred-budget" value="3.5" step="0.1" required>
+              </div>
+              <div class="form-group">
+                <label>College Annual Tuition Fee (INR Lakhs)</label>
+                <input type="number" id="pred-fee" value="2.2" step="0.1" required>
+              </div>
+              <div class="form-group">
+                <label>College Average Package (LPA)</label>
+                <input type="number" id="pred-placement" value="16.5" step="0.5" required>
+              </div>
+              <div class="form-group">
+                <label>Institutional Tier</label>
+                <select id="pred-tier">
+                  <option value="Tier 1">Tier 1 (IIT/NIT/BITS)</option>
+                  <option value="Tier 2">Tier 2 (Top State/Pvt)</option>
+                  <option value="Tier 3">Tier 3 (Regional)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Model Architecture</label>
+                <select id="pred-model">
+                  <option value="Gradient Boosting">Hist Gradient Boosting (Recommended)</option>
+                  <option value="Random Forest">Random Forest Classifier</option>
+                  <option value="Logistic Regression">Logistic Regression</option>
+                  <option value="Artificial Neural Network (ANN)">Artificial Neural Network (ANN)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full margin-top"><i class="fa-solid fa-calculator"></i> Predict Admission Probability</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Output Result Panel -->
+        <div class="card" id="predict-result-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-square-poll-vertical"></i> Probability Prediction Output</h3>
+          </div>
+          <div class="card-body text-center">
+            <div class="prob-gauge-wrapper">
+              <div class="prob-circle" id="prob-circle-display">
+                <span id="prob-percentage">--%</span>
+              </div>
+              <p class="prob-label" id="prob-classification">Submit form to compute ML estimate</p>
+            </div>
+
+            <div class="prob-details-grid margin-top">
+              <div class="prob-detail-item">
+                <span class="detail-name">Rank Gap</span>
+                <span class="detail-val" id="res-rank-gap">--</span>
+              </div>
+              <div class="prob-detail-item">
+                <span class="detail-name">Rank Fit Index</span>
+                <span class="detail-val" id="res-rank-fit">--</span>
+              </div>
+              <div class="prob-detail-item">
+                <span class="detail-name">Budget Ratio</span>
+                <span class="detail-val" id="res-fee-aff">--</span>
+              </div>
+              <div class="prob-detail-item">
+                <span class="detail-name">Model Selected</span>
+                <span class="detail-val" id="res-model-used">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. HYBRID RECOMMENDATION ENGINE TAB -->
+    <section id="tab-recommend" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-award"></i> Explainable Hybrid Recommendation Engine</h2>
+        <p>Combines ML Admission Probability, Budget Compatibility, Placement ROI, Branch Match &amp; Location Preference.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-sliders"></i> Student Profile &amp; Decision Criteria</h3>
+        </div>
+        <div class="card-body">
+          <form id="form-recommend" class="grid-4col">
+            <div class="form-group">
+              <label>Entrance Rank</label>
+              <input type="number" id="rec-rank" value="4500" required>
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="rec-category">
+                <option value="General">General (CRL)</option>
+                <option value="OBC">OBC-NCL</option>
+                <option value="EWS">EWS</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Branch</label>
+              <select id="rec-branch">
+                <option value="CSE">Computer Science (CSE)</option>
+                <option value="AI_DS">AI &amp; Data Science</option>
+                <option value="ECE">Electronics (ECE)</option>
+                <option value="IT">Information Tech (IT)</option>
+                <option value="EEE">Electrical (EEE)</option>
+                <option value="ME">Mechanical (ME)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Max Annual Budget (Lakhs)</label>
+              <input type="number" id="rec-budget" value="4.0" step="0.5" required>
+            </div>
+            <div class="form-group span-4">
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Explainable Recommendations</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="margin-top">
+        <h3 class="margin-bottom-sm"><i class="fa-solid fa-star text-accent"></i> Top Recommended Colleges</h3>
+        <div class="recs-grid" id="recs-results-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. RAG & AI ASSISTANT TAB -->
+    <section id="tab-rag" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-robot"></i> Source-Grounded RAG &amp; Natural Language AI Assistant</h2>
+        <p>Ask admission questions grounded on official JoSAA guidelines, KEA fee structures, and audited placement reports.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Chat Console -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-comments"></i> AI Decision Assistant</h3>
+          </div>
+          <div class="card-body flex-column">
+            <div class="chat-history" id="chat-history-box">
+              <div class="chat-msg bot">
+                <div class="msg-author">EduAnalytics AI Assistant</div>
+                <div class="msg-text">Hello! I am your AI Decision Assistant grounded on empirical database analytics and official JoSAA/KEA verification documents. Select a quick query below or ask any question!</div>
+              </div>
+            </div>
+
+            <div class="quick-pills-wrapper margin-top" style="display:flex; flex-wrap:wrap; gap:8px;">
+              <button class="btn btn-accent btn-sm quick-pill" data-prompt="Which affordable CSE colleges fit my rank 4500?"><i class="fa-solid fa-graduation-cap"></i> Affordable CSE Colleges</button>
+              <button class="btn btn-accent btn-sm quick-pill" data-prompt="What are the Karnataka KCET cutoffs & SSP scholarship rules?"><i class="fa-solid fa-location-dot"></i> Karnataka &amp; SSP Scholarships</button>
+              <button class="btn btn-accent btn-sm quick-pill" data-prompt="Which colleges offer the highest placement relative to tuition fee?"><i class="fa-solid fa-trophy"></i> Best ROI Colleges</button>
+              <button class="btn btn-accent btn-sm quick-pill" data-prompt="List top Tier 1 engineering colleges with average package above 15 LPA"><i class="fa-solid fa-star"></i> Top Tier 1 Colleges</button>
+              <button class="btn btn-accent btn-sm quick-pill" data-prompt="What is the fee difference between KCET government quota and COMEDK private quota?"><i class="fa-solid fa-scale-balanced"></i> KCET vs COMEDK Fees</button>
+              <button class="btn btn-accent btn-sm quick-pill" data-prompt="What are the eligibility criteria and documents required for JoSAA counseling?"><i class="fa-solid fa-file-contract"></i> JoSAA Eligibility &amp; Docs</button>
+            </div>
+
+            <form id="form-chat" class="chat-input-wrapper margin-top-sm" action="#tab-rag">
+              <input type="text" id="chat-input" placeholder="e.g. Which affordable CSE colleges fit my rank 4500?" required>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <!-- RAG Source Inspection Console -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-passport"></i> RAG Source Verification Panel</h3>
+          </div>
+          <div class="card-body">
+            <div id="rag-sources-container">
+              <p class="placeholder-text">Source citations and document verification metadata will appear here when querying official documents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. MULTIMODAL AI STUDIO TAB -->
+    <section id="tab-multimodal" class="tab-pane">
+      <div class="section-title">
+        <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Multimodal AI &amp; GenAI Feature Studio</h2>
+        <p>CLIP vision-text concept search, BLIP image captioner, CNN document classifier, AI Insight Cards &amp; Storyboard scripts.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Module 1: CLIP Campus Concept Search -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-eye"></i> CLIP Campus Concept Image Matcher</h3>
+          </div>
+          <div class="card-body">
+            <form id="form-clip-search" class="flex-gap">
+              <input type="text" id="clip-query" value="modern robotics lab" placeholder="e.g. green library, sports stadium" required>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            </form>
+            <div class="clip-results-grid margin-top" id="clip-results-container">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2: BLIP Image Captioning & CNN Doc Classifier -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-file-image"></i> Vision AI (BLIP Captioning &amp; CNN Classifier)</h3>
+          </div>
+          <div class="card-body">
+            <div class="drop-zone" id="vision-drop-zone">
+              <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+              <p>Upload a campus image or student certificate document</p>
+              <input type="file" id="vision-file-input" class="file-input" accept="image/*">
+            </div>
+
+            <!-- Submit button: hidden until a file is selected -->
+            <button
+              id="btn-vision-submit"
+              class="btn btn-primary btn-full margin-top"
+              style="display:none;"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Run Vision AI Analysis
+            </button>
+
+            <div class="vision-results-output margin-top" id="vision-results-container">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3: AI Insight Card Generator -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-id-card"></i> Dynamic AI Insight Graphic Generator</h3>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-accent btn-full" id="btn-generate-card"><i class="fa-solid fa-palette"></i> Generate AI Decision Summary Card</button>
+            <div class="insight-card-preview margin-top" id="insight-card-container">
+              <!-- SVG preview rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4: Video Storyboard Script Generator -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-film"></i> Video Storyboard Script Generator</h3>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-primary btn-full" id="btn-generate-storyboard"><i class="fa-solid fa-clapperboard"></i> Generate "Why This College Matches You" Storyboard</button>
+            <div class="storyboard-list margin-top" id="storyboard-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p>AI-Powered Engineering College Admission Analytics Platform &copy; 2026. Data Analytics &amp; GenAI Architecture.</p>
+    </div>
+  </footer>
+
+  <!-- App JavaScript Files -->
+  <script src="/static/js/charts.js?v=20260818"></script>
+  <script src="/static/js/app.js?v=20260818"></script>
+</body>
+</html>
