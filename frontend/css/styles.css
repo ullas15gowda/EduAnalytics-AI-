@@ -315,6 +315,49 @@ body {
   gap: 28px;
 }
 
+/* Pipeline Architecture Flow */
+.pipeline-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 4px;
+}
+
+.pipe-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  padding: 10px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.pipe-step:hover {
+  border-color: #6366f1;
+  background: rgba(49, 46, 129, 0.7);
+  transform: translateY(-2px);
+}
+
+.pipe-step i {
+  color: #38bdf8;
+  font-size: 1rem;
+}
+
+.pipe-arrow {
+  color: #64748b;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
 /* Hero Section */
 .hero-card {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.12) 50%, rgba(6, 182, 212, 0.15) 100%);
