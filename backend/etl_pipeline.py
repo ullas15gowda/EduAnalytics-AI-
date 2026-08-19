@@ -118,8 +118,14 @@ def run_etl_pipeline():
 
 def get_db_connection():
     if not os.path.exists(DB_PATH):
-        run_etl_pipeline()
-    conn = sqlite3.connect(DB_PATH)
+        try:
+            run_etl_pipeline()
+        except Exception as e:
+            print(f"ETL pipeline warning: {e}")
+    try:
+        conn = sqlite3.connect(DB_PATH)
+    except Exception:
+        conn = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
     conn.row_factory = sqlite3.Row
     return conn
 

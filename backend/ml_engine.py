@@ -136,32 +136,47 @@ def train_and_evaluate_models():
         }
     }
 
-    # Save artifacts to pickle
-    with open(MODEL_PATH, "wb") as f:
-        pickle.dump({
-            "scaler": scaler,
-            "models": {k: v["model_obj"] for k, v in results.items()},
-            "metadata": training_metadata
-        }, f)
+    # Save artifacts to pickle (fallback to /tmp on read-only filesystems)
+    save_path = MODEL_PATH
+    try:
+        with open(save_path, "wb") as f:
+            pickle.dump({
+                "scaler": scaler,
+                "models": {k: v["model_obj"] for k, v in results.items()},
+                "metadata": training_metadata
+            }, f)
+    except Exception:
+        save_path = os.path.join("/tmp", "trained_models.pkl")
+        with open(save_path, "wb") as f:
+            pickle.dump({
+                "scaler": scaler,
+                "models": {k: v["model_obj"] for k, v in results.items()},
+                "metadata": training_metadata
+            }, f)
 
     print(f"Machine learning training completed. Best performing model: {best_model_name} (F1: {best_f1:.4f})")
     return training_metadata
 
 def load_ml_artifacts():
-    if not os.path.exists(MODEL_PATH):
-        train_and_evaluate_models()
+    paths_to_try = [MODEL_PATH, os.path.join("/tmp", "trained_models.pkl")]
+    for path in paths_to_try:
+        if os.path.exists(path):
+            try:
+                with open(path, "rb") as f:
+                    return pickle.load(f)
+            except (AttributeError, ImportError, ModuleNotFoundError, OSError, pickle.UnpicklingError, ValueError) as exc:
+                print(f"Stored ML artifact at {path} is incompatible ({exc}).")
 
-    # Model pickles are coupled to the scikit-learn version used to create
-    # them.  Regenerate the bundled artifact when its classes cannot be
-    # restored after a dependency upgrade instead of returning a 500 error.
-    try:
-        with open(MODEL_PATH, "rb") as f:
-            return pickle.load(f)
-    except (AttributeError, ImportError, ModuleNotFoundError, OSError, pickle.UnpicklingError, ValueError) as exc:
-        print(f"Stored ML artifact is incompatible ({exc}); retraining models.")
-        train_and_evaluate_models()
-        with open(MODEL_PATH, "rb") as f:
-            return pickle.load(f)
+    # If no valid model pickle found, retrain models
+    train_and_evaluate_models()
+    for path in paths_to_try:
+        if os.path.exists(path):
+            try:
+                with open(path, "rb") as f:
+                    return pickle.load(f)
+            except Exception:
+                pass
+    raise RuntimeError("Failed to load or retrain ML models.")
 
 def predict_admission_probability(
     entrance_rank: int,
