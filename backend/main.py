@@ -20,10 +20,6 @@ from backend.ml_engine import load_ml_artifacts, predict_admission_probability, 
 from backend.recommendation_engine import recommend_colleges
 from backend.rag_engine import query_rag_system
 from backend.llm_engine import ask_llm_assistant
-from backend.multimodal_engine import (
-    clip_campus_search, blip_image_captioner, cnn_document_classifier,
-    generate_ai_insight_card, generate_video_storyboard_script
-)
 
 app = FastAPI(
     title="AI-Powered Engineering College Admission Analytics Platform",
@@ -68,21 +64,6 @@ class RAGQueryRequest(BaseModel):
 
 class LLMQueryRequest(BaseModel):
     prompt: str
-
-class CLIPSearchRequest(BaseModel):
-    query: str
-
-class InsightCardRequest(BaseModel):
-    college_name: str
-    branch_code: str
-    match_score: float
-    avg_fee: float
-    avg_pkg: float
-
-class VideoScriptRequest(BaseModel):
-    college_name: str
-    short_name: str
-    branch: str
 
 # 1. Health Check & Core Overview
 @app.get("/api/health")
@@ -213,28 +194,7 @@ def rag_query(req: RAGQueryRequest):
 def llm_assistant(req: LLMQueryRequest):
     return ask_llm_assistant(req.prompt)
 
-# 8. Multimodal AI Features
-@app.post("/api/multimodal/clip-search")
-def clip_search(req: CLIPSearchRequest):
-    return clip_campus_search(req.query)
-
-@app.post("/api/multimodal/blip-caption")
-def blip_caption(file: UploadFile = File(...)):
-    return blip_image_captioner(file.filename)
-
-@app.post("/api/multimodal/classify-doc")
-def classify_doc(file: UploadFile = File(...)):
-    return cnn_document_classifier(file.filename)
-
-@app.post("/api/multimodal/insight-card")
-def insight_card(req: InsightCardRequest):
-    return generate_ai_insight_card(req.college_name, req.branch_code, req.match_score, req.avg_fee, req.avg_pkg)
-
-@app.post("/api/multimodal/video-storyboard")
-def video_storyboard(req: VideoScriptRequest):
-    return generate_video_storyboard_script(req.college_name, req.short_name, req.branch)
-
-# 9. Dedicated Karnataka Admission & Scholarship Assistant Endpoints
+# 8. Dedicated Karnataka Admission & Scholarship Assistant Endpoints
 from backend.karnataka_engine import calculate_karnataka_scholarship, get_karnataka_college_recommendations, KARNATAKA_COLLEGES
 
 class KarnatakaScholarshipRequest(BaseModel):

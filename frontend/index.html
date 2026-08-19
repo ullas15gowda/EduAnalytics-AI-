@@ -50,7 +50,6 @@
       <button class="tab-btn" data-tab="tab-predict"><i class="fa-solid fa-bullseye"></i> Admission Predictor</button>
       <button class="tab-btn" data-tab="tab-recommend"><i class="fa-solid fa-award"></i> Hybrid Recs</button>
       <button class="tab-btn" data-tab="tab-rag"><i class="fa-solid fa-robot"></i> RAG &amp; AI Assistant</button>
-      <button class="tab-btn" data-tab="tab-multimodal"><i class="fa-solid fa-wand-magic-sparkles"></i> Multimodal AI</button>
     </div>
   </nav>
 
@@ -821,85 +820,6 @@
           <div class="card-body">
             <div id="rag-sources-container">
               <p class="placeholder-text">Source citations and document verification metadata will appear here when querying official documents.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. MULTIMODAL AI STUDIO TAB -->
-    <section id="tab-multimodal" class="tab-pane">
-      <div class="section-title">
-        <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Multimodal AI &amp; GenAI Feature Studio</h2>
-        <p>CLIP vision-text concept search, BLIP image captioner, CNN document classifier, AI Insight Cards &amp; Storyboard scripts.</p>
-      </div>
-
-      <div class="grid-2col">
-        <!-- Module 1: CLIP Campus Concept Search -->
-        <div class="card">
-          <div class="card-header">
-            <h3><i class="fa-solid fa-eye"></i> CLIP Campus Concept Image Matcher</h3>
-          </div>
-          <div class="card-body">
-            <form id="form-clip-search" class="flex-gap">
-              <input type="text" id="clip-query" value="modern robotics lab" placeholder="e.g. green library, sports stadium" required>
-              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-            </form>
-            <div class="clip-results-grid margin-top" id="clip-results-container">
-              <!-- Populated via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Module 2: BLIP Image Captioning & CNN Doc Classifier -->
-        <div class="card">
-          <div class="card-header">
-            <h3><i class="fa-solid fa-file-image"></i> Vision AI (BLIP Captioning &amp; CNN Classifier)</h3>
-          </div>
-          <div class="card-body">
-            <div class="drop-zone" id="vision-drop-zone">
-              <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
-              <p>Upload a campus image or student certificate document</p>
-              <input type="file" id="vision-file-input" class="file-input" accept="image/*">
-            </div>
-
-            <!-- Submit button: hidden until a file is selected -->
-            <button
-              id="btn-vision-submit"
-              class="btn btn-primary btn-full margin-top"
-              style="display:none;"
-            >
-              <i class="fa-solid fa-wand-magic-sparkles"></i> Run Vision AI Analysis
-            </button>
-
-            <div class="vision-results-output margin-top" id="vision-results-container">
-              <!-- Populated via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Module 3: AI Insight Card Generator -->
-        <div class="card">
-          <div class="card-header">
-            <h3><i class="fa-solid fa-id-card"></i> Dynamic AI Insight Graphic Generator</h3>
-          </div>
-          <div class="card-body">
-            <button class="btn btn-accent btn-full" id="btn-generate-card"><i class="fa-solid fa-palette"></i> Generate AI Decision Summary Card</button>
-            <div class="insight-card-preview margin-top" id="insight-card-container">
-              <!-- SVG preview rendered via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Module 4: Video Storyboard Script Generator -->
-        <div class="card">
-          <div class="card-header">
-            <h3><i class="fa-solid fa-film"></i> Video Storyboard Script Generator</h3>
-          </div>
-          <div class="card-body">
-            <button class="btn btn-primary btn-full" id="btn-generate-storyboard"><i class="fa-solid fa-clapperboard"></i> Generate "Why This College Matches You" Storyboard</button>
-            <div class="storyboard-list margin-top" id="storyboard-container">
-              <!-- Rendered via JS -->
             </div>
           </div>
         </div>

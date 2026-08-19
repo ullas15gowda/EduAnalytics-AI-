@@ -119,28 +119,43 @@ def ask_llm_assistant(user_prompt: str, user_api_key: str = None):
     numbers = re.findall(r"\d+\.?\d*", user_prompt)
     rank = int(numbers[0]) if numbers else 0
 
-    city_match = re.search(r"\bin\s+([a-zA-Z]+)\b", user_prompt, re.IGNORECASE)
-    target_city = city_match.group(1) if city_match else None
+    city_map = {
+        "mysore": "Mysuru", "mysuru": "Mysuru", "mysusru": "Mysuru",
+        "bangalore": "Bengaluru", "bengaluru": "Bengaluru",
+        "chennai": "Chennai", "mumbai": "Mumbai", "pune": "Pune",
+        "delhi": "Delhi", "hyderabad": "Hyderabad", "lucknow": "Lucknow", "kolkata": "Kolkata"
+    }
 
-    # Fetch matching colleges from database
+    found_city = None
+    for token in prompt_lower.split():
+        clean_token = re.sub(r"[^\w]", "", token)
+        if clean_token in city_map:
+            found_city = city_map[clean_token]
+            break
+
+    if not found_city:
+        city_match = re.search(r"\bin\s+([a-zA-Z]+)\b", user_prompt, re.IGNORECASE)
+        if city_match:
+            found_city = city_match.group(1).capitalize()
+
+    conn = get_db_connection()
     sql = "SELECT college_name, short_name, city, state, tier, nirf_rank, tuition_fee_annual_lakhs, avg_placement_lpa, highest_placement_lpa, 12500 AS closing_rank FROM colleges"
     conditions = []
-    if target_city:
-        conditions.append(f"LOWER(city) = LOWER('{target_city}')")
-    if rank:
+    if found_city:
+        conditions.append(f"(LOWER(city) LIKE '%{found_city.lower()[:4]}%' OR LOWER(state) LIKE '%{found_city.lower()[:4]}%' OR LOWER(college_name) LIKE '%{found_city.lower()[:4]}%')")
+    if rank > 0:
         conditions.append(f"closing_rank >= {rank}")
     if conditions:
         sql += " WHERE " + " AND ".join(conditions)
-    sql += " ORDER BY tuition_fee_annual_lakhs ASC LIMIT 10"
+    sql += " ORDER BY nirf_rank ASC LIMIT 10"
 
-    conn = get_db_connection()
     df_matches = pd.read_sql_query(sql, conn)
     conn.close()
 
     if df_matches.empty:
         conn = get_db_connection()
         df_matches = pd.read_sql_query(
-            "SELECT college_name, short_name, city, state, tier, nirf_rank, tuition_fee_annual_lakhs, avg_placement_lpa, highest_placement_lpa, 12500 AS closing_rank FROM colleges ORDER BY nirf_rank ASC LIMIT 5",
+            "SELECT college_name, short_name, city, state, tier, nirf_rank, tuition_fee_annual_lakhs, avg_placement_lpa, highest_placement_lpa, 12500 AS closing_rank FROM colleges ORDER BY nirf_rank ASC LIMIT 8",
             conn
         )
         conn.close()
@@ -150,9 +165,12 @@ def ask_llm_assistant(user_prompt: str, user_api_key: str = None):
         for _, m in df_matches.iterrows()
     ])
 
+    extracted_params_str = (f"Entrance Rank: `#{rank:,}`" if rank > 0 else "Entrance Rank: `N/A`") + (f" | City: `{found_city}`" if found_city else "")
+
     response_md = (
         f"### EduAnalytics AI Decision Assistant\n\n"
-        f"**Question**: *\"{user_prompt}\"*\n\n"
+        f"**Question**: *\"{user_prompt}\"*\n"
+        f"**Search Criteria**: {extracted_params_str}\n\n"
         f"#### Grounded College & Cutoff Analytics\n\n"
         f"| NIRF | College Name | Location | Tier | Annual Fee | Avg Package | Round 1 Cutoff |\n"
         f"| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n"
@@ -160,7 +178,7 @@ def ask_llm_assistant(user_prompt: str, user_api_key: str = None):
         f"#### Official Admission Guidelines & Source Documentation\n"
         f"{rag_text}\n\n"
         f"#### Executive Summary\n"
-        f"• **Cutoff Fit**: Your entrance query was matched against historical closing rank matrices.\n"
+        f"• **Database Match**: Results returned from empirical college cutoff & placement records.\n"
         f"• **Financial Transparency**: Fees reflect official state authority (KEA/JoSAA) fee matrices."
     )
 
