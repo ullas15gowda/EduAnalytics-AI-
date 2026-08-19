@@ -207,26 +207,87 @@
 
       <!-- Pipeline Architecture Flow Diagram -->
       <div class="card margin-top">
-        <div class="card-header">
-          <h3><i class="fa-solid fa-diagram-project"></i> Primary Project Positioning &amp; End-to-End Pipeline</h3>
+        <div class="card-header flex-between">
+          <h3><i class="fa-solid fa-diagram-project"></i> Primary Project Positioning &amp; End-to-End Analytics Pipeline</h3>
+          <span class="tag" style="background:rgba(52,211,153,0.18);color:#34d399;border:1px solid rgba(52,211,153,0.4);"><i class="fa-solid fa-circle-play"></i> 8 Active Processing Stages</span>
         </div>
         <div class="card-body">
-          <div class="pipeline-wrapper">
-            <div class="pipe-step"><i class="fa-solid fa-file-csv"></i><span>Raw Data</span></div>
+          <!-- Flow Step Chips Bar -->
+          <div class="pipeline-wrapper margin-bottom-sm">
+            <div class="pipe-step"><i class="fa-solid fa-file-csv"></i><span>1. Raw Data</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-filter"></i><span>ETL &amp; Cleaning</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-filter"></i><span>2. ETL &amp; Clean</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-chart-column"></i><span>EDA &amp; Trends</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-chart-column"></i><span>3. EDA Trends</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-database"></i><span>SQL Analytics</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-database"></i><span>4. SQL Engine</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-sliders"></i><span>Feature Eng</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-sliders"></i><span>5. Feature Eng</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-microchip"></i><span>ML Probability</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-microchip"></i><span>6. ML Models</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-thumbs-up"></i><span>Explainable Recs</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-thumbs-up"></i><span>7. Explain Recs</span></div>
             <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="pipe-step"><i class="fa-solid fa-book-bookmark"></i><span>RAG &amp; GenAI</span></div>
+            <div class="pipe-step"><i class="fa-solid fa-book-bookmark"></i><span>8. RAG &amp; GenAI</span></div>
+          </div>
+
+          <!-- 8 Stage Pipeline Details Grid -->
+          <div class="grid-4col margin-top-sm">
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#38bdf8;">
+                <i class="fa-solid fa-file-csv"></i><strong>1. Raw Ingestion</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">120+ Engineering Institutes (IITs, NITs, BITS &amp; KEA #E001–#E258) with historical 2021–2025 cutoff matrix.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#38bdf8;">
+                <i class="fa-solid fa-filter"></i><strong>2. ETL Pipeline</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">Automated deduplication, text normalization, median imputation, and SQLite relational database loading.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#38bdf8;">
+                <i class="fa-solid fa-chart-column"></i><strong>3. EDA &amp; Trends</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">YoY cutoff rank relaxation, fee vs placement package scatter plots, and city distribution analytics.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#38bdf8;">
+                <i class="fa-solid fa-database"></i><strong>4. SQL Query Runner</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">CTEs, Window functions (RANK, DENSE_RANK), KCET vs COMEDK fee deltas, and SSP scholarship analytics.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#a5b4fc;">
+                <i class="fa-solid fa-sliders"></i><strong>5. Feature Engineering</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">Derived rank gap, rank fit ratio, fee affordability index, and tier one-hot encoding for ML training.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#a5b4fc;">
+                <i class="fa-solid fa-microchip"></i><strong>6. ML Admission Predictor</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">Supervised classification (Logistic Reg, Random Forest, Gradient Boosting, ANN) for admission probabilities.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#a5b4fc;">
+                <i class="fa-solid fa-thumbs-up"></i><strong>7. Explainable Recs</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">Multi-objective composite scoring combining admission chance, rank fit, ROI, and transparent decision tags.</p>
+            </div>
+
+            <div class="highlight-item" style="flex-direction:column;align-items:flex-start;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;color:#a5b4fc;">
+                <i class="fa-solid fa-book-bookmark"></i><strong>8. RAG &amp; GenAI Assistant</strong>
+              </div>
+              <p style="font-size:0.82rem;color:#94a3b8;margin:0;">Gemini 2.0 / 1.5 Flash assistant with TF-IDF document retrieval over official KEA rules &amp; SSP scholarship guidelines.</p>
+            </div>
           </div>
         </div>
       </div>
