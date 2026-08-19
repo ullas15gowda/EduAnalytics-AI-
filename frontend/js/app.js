@@ -338,8 +338,6 @@ function initFormListeners() {
       });
     });
   }
-
-  }
 } // end initFormListeners
 
 

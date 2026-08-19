@@ -11,7 +11,6 @@ An engineering-college admission decision-support platform for Indian students, 
 - **Admission predictor** trained with Logistic Regression, Random Forest, Gradient Boosting, and an ANN.
 - **Hybrid college recommendations** using rank, branch, location, budget, hostel, and placement preferences.
 - **RAG-style document search** over the bundled admission-guidance text files.
-- **Multimodal demo tools** for campus search, captions, document classification, insight cards, and storyboards.
 
 ## Project layout
 
@@ -77,7 +76,6 @@ It exposes health, data-quality, ETL-trigger, and system-stat endpoints at `http
 | Recommendations | `POST /api/recommend` |
 | Knowledge assistant | `POST /api/rag/query`, `POST /api/llm/assistant` |
 | Karnataka tools | `GET /api/karnataka/colleges`, `POST /api/karnataka/scholarship-check`, `POST /api/karnataka/college-guide` |
-| Multimodal tools | `POST /api/multimodal/clip-search`, `POST /api/multimodal/blip-caption`, `POST /api/multimodal/classify-doc` |
 
 ## Data and model notes
 
