@@ -467,38 +467,46 @@
         <p>Interactive filterable BI dashboard providing strategic indicators for institutional benchmarking.</p>
       </div>
 
-      <!-- Filters Panel -->
-      <div class="filter-panel">
-        <div class="filter-group">
-          <label>Tier</label>
-          <select id="filter-tier">
-            <option value="">All Tiers</option>
-            <option value="Tier 1">Tier 1 (IIT/NIT/BITS)</option>
-            <option value="Tier 2">Tier 2 (Top State/Pvt)</option>
-            <option value="Tier 3">Tier 3 (Regional)</option>
-          </select>
+      <!-- Filter Control Console (Single Box Structure) -->
+      <div class="card filter-box-card margin-bottom">
+        <div class="card-header flex-between">
+          <h3><i class="fa-solid fa-sliders"></i> Strategic Filter &amp; Institutional Benchmark Controls</h3>
+          <span class="tag" style="background:rgba(99,102,241,0.2);color:#818cf8;border:1px solid rgba(99,102,241,0.4);"><i class="fa-solid fa-bolt"></i> Real-Time BI Filtering</span>
         </div>
-        <div class="filter-group">
-          <label>State</label>
-          <select id="filter-state">
-            <option value="">All States</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Max Annual Fee (Lakhs)</label>
-          <input type="number" id="filter-max-fee" placeholder="e.g. 4.0" step="0.5">
-        </div>
-        <div class="filter-group">
-          <label>Min Placement (LPA)</label>
-          <input type="number" id="filter-min-placement" placeholder="e.g. 10.0" step="1.0">
-        </div>
-        <div class="filter-group filter-btn-group">
-          <button class="btn btn-primary" id="btn-apply-filters"><i class="fa-solid fa-filter"></i> Apply Filters</button>
+        <div class="card-body">
+          <div class="grid-4col" style="align-items: flex-end; gap: 20px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label><i class="fa-solid fa-layer-group"></i> Tier</label>
+              <select id="filter-tier">
+                <option value="">All Tiers</option>
+                <option value="Tier 1">Tier 1 (IIT/NIT/BITS)</option>
+                <option value="Tier 2">Tier 2 (Top State/Pvt)</option>
+                <option value="Tier 3">Tier 3 (Regional)</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label><i class="fa-solid fa-map-location-dot"></i> State</label>
+              <select id="filter-state">
+                <option value="">All States</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label><i class="fa-solid fa-indian-rupee-sign"></i> Max Annual Fee (Lakhs)</label>
+              <input type="number" id="filter-max-fee" placeholder="e.g. 4.0" step="0.5">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label><i class="fa-solid fa-briefcase"></i> Min Placement (LPA)</label>
+              <input type="number" id="filter-min-placement" placeholder="e.g. 10.0" step="1.0">
+            </div>
+          </div>
+          <div class="margin-top-sm" style="display:flex; justify-content:flex-end;">
+            <button class="btn btn-primary" id="btn-apply-filters"><i class="fa-solid fa-filter"></i> Apply Filters &amp; Update Indicators</button>
+          </div>
         </div>
       </div>
 
