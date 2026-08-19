@@ -27,4 +27,4 @@ where = ["."]
 include = ["backend*"]
 
 [tool.vercel]
-entrypoint = "api/index.py"
+entrypoint = "backend.main:app"
