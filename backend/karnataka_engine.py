@@ -46,7 +46,7 @@ KARNATAKA_COLLEGES = [
     {"id": "kar_mit_mysore", "name": "Maharaja Institute of Technology Mysore (MIT Mysore, Belawadi)", "short_name": "MIT Mysore (Belawadi)", "location": "Belawadi, Srirangapatna Tq, Mandya-Mysore Highway, Mysuru", "website_url": "https://mitmysore.in/", "govt_portal_url": GOVT_PORTALS["KEA_PORTAL"], "contact_phone": "+91-08236-292601", "kcet_code": "E158", "comedk_code": "E078", "pgcet_mba_code": "B219", "pgcet_mca_code": "C446", "nirf_rank": 175, "tier": "NAAC A Grade Autonomous / VTU", "kcet_fee_annual": 105000, "comedk_fee_annual": 225000, "mgmt_fee_annual": 320000, "hostel_fee_annual": 90000, "avg_placement_lpa": 6.2, "highest_placement_lpa": 28.0, "placement_rate_pct": 86.5, "kcet_cse_cutoff": 14500, "comedk_cse_cutoff": 19500, "cutoffs": {"General": 14500, "2A": 26000, "2B": 29000, "3A": 19500, "3B": 17800, "SC": 62000, "ST": 72000, "Cat-1": 31000}},
     {"id": "kar_mit_thandavapura", "name": "Maharaja Institute of Technology Thandavapura (MITT)", "short_name": "MIT Thandavapura", "location": "Thandavapura, Nanjangud Taluk, Mysuru", "website_url": "https://mitt.edu.in/", "govt_portal_url": GOVT_PORTALS["KEA_PORTAL"], "contact_phone": "+91-0821-2970170", "kcet_code": "E258", "comedk_code": "E082", "nirf_rank": 210, "tier": "VTU Affiliated Engineering Institute", "kcet_fee_annual": 102000, "comedk_fee_annual": 210000, "mgmt_fee_annual": 280000, "hostel_fee_annual": 85000, "avg_placement_lpa": 5.2, "highest_placement_lpa": 20.0, "placement_rate_pct": 80.0, "kcet_cse_cutoff": 22000, "comedk_cse_cutoff": 28000, "cutoffs": {"General": 22000, "2A": 38000, "2B": 42000, "3A": 29000, "3B": 26000, "SC": 85000, "ST": 95000, "Cat-1": 45000}},
     {"id": "kar_rrce", "name": "Raja Rajeswari College of Engineering (RRCE)", "short_name": "RRCE Kumbalgodu", "location": "Kumbalgodu, Mysore Road, Bengaluru", "website_url": "https://www.rrce.org", "govt_portal_url": GOVT_PORTALS["KEA_PORTAL"], "contact_phone": "+91-080-28437124", "kcet_code": "E158_ALT", "comedk_code": "E099", "nirf_rank": 195, "tier": "NAAC A+ & NBA Accredited Autonomous", "kcet_fee_annual": 105000, "comedk_fee_annual": 220000, "mgmt_fee_annual": 320000, "hostel_fee_annual": 95000, "avg_placement_lpa": 5.5, "highest_placement_lpa": 24.0, "placement_rate_pct": 82.5, "kcet_cse_cutoff": 18500, "comedk_cse_cutoff": 24000, "cutoffs": {"General": 18500, "2A": 32000, "2B": 35000, "3A": 24000, "3B": 22000, "SC": 75000, "ST": 85000, "Cat-1": 38000}},
-    {"id": "kar_acharya", "name": "Acharya Institute of Technology", "short_name": "Acharya Soladevanahalli", "location": "Soladevanahalli, Hesaraghatta Road, Bengaluru", "website_url": "https://www.acharya.ac.in", "govt_portal_url": GOVT_PORTALS["KEA_PORTAL"], "contact_phone": "+91-080-23722222", "kcet_code": "E086", "comedk_code": "E001", "nirf_rank": 150, "tier": "NAAC A Grade Autonomous / VTU", "kcet_fee_annual": 105000, "comedk_fee_annual": 235000, "mgmt_fee_annual": 400000, "hostel_fee_annual": 110000, "avg_placement_lpa": 7.5, "highest_placement_lpa": 34.0, "placement_rate_pct": 86.0, "kcet_cse_cutoff": 9500, "comedk_cse_cutoff": 12500, "cutoffs": {"General": 9500, "2A": 18500, "2B": 20500, "3A": 14200, "3B": 12500, "SC": 48000, "ST": 58000, "Cat-1": 24000}},
+    {"id": "kar_acharya", "name": "Acharya Institute of Technology", "short_name": "Acharya Soladevanahalli", "location": "Soladevanahalli, Hesaraghatta Road, Bengaluru", "website_url": "https://www.acharya.ac.in", "govt_portal_url": GOVT_PORTALS["KEA_PORTAL"], "contact_phone": "+91-080-23722222", "kcet_code": "E086", "comedk_code": "E086_COMEDK", "nirf_rank": 150, "tier": "NAAC A Grade Autonomous / VTU", "kcet_fee_annual": 105000, "comedk_fee_annual": 235000, "mgmt_fee_annual": 400000, "hostel_fee_annual": 110000, "avg_placement_lpa": 7.5, "highest_placement_lpa": 34.0, "placement_rate_pct": 86.0, "kcet_cse_cutoff": 9500, "comedk_cse_cutoff": 12500, "cutoffs": {"General": 9500, "2A": 18500, "2B": 20500, "3A": 14200, "3B": 12500, "SC": 48000, "ST": 58000, "Cat-1": 24000}},
     {"id": "kar_bmsit", "name": "BMS Institute of Technology & Management (BMSIT)", "short_name": "BMSIT Yelahanka", "location": "Yelahanka, Bengaluru", "website_url": "https://bmsit.ac.in", "govt_portal_url": GOVT_PORTALS["KEA_PORTAL"], "contact_phone": "+91-080-68730424", "kcet_code": "E092", "comedk_code": "E028", "nirf_rank": 145, "tier": "Top Private Autonomous", "kcet_fee_annual": 105000, "comedk_fee_annual": 235000, "mgmt_fee_annual": 420000, "hostel_fee_annual": 110000, "avg_placement_lpa": 9.5, "highest_placement_lpa": 44.0, "placement_rate_pct": 89.5, "kcet_cse_cutoff": 4200, "comedk_cse_cutoff": 5800, "cutoffs": {"General": 4200, "2A": 8500, "2B": 9400, "3A": 6500, "3B": 5800, "SC": 26000, "ST": 34000, "Cat-1": 11200}}
 ]
 
@@ -123,22 +123,29 @@ def get_karnataka_college_recommendations(
     rank: int = 2500,
     category: str = "General",
     preferred_branch: str = "CSE",
-    max_budget: float = 10.0
+    max_budget: float = 999.0
 ):
     results = []
-    sq = search_query.strip().lower() if search_query and search_query.strip() else None
+    sq_raw = search_query.strip() if search_query and search_query.strip() else None
+    sq_upper = sq_raw.upper() if sq_raw else None
+    sq_lower = sq_raw.lower() if sq_raw else None
+
     mult = BRANCH_MULTIPLIERS.get(preferred_branch, 1.0)
     branch_full_name = BRANCH_NAMES.get(preferred_branch, preferred_branch)
 
     for c in KARNATAKA_COLLEGES:
-        if sq:
-            matches_name = sq in c["name"].lower() or sq in c["short_name"].lower() or sq in c["id"].lower()
-            matches_kcet = sq in c["kcet_code"].lower()
-            matches_comedk = sq in c.get("comedk_code", "").lower()
-            matches_mba = sq in c.get("pgcet_mba_code", "").lower()
-            matches_mca = sq in c.get("pgcet_mca_code", "").lower()
-            if not (matches_name or matches_kcet or matches_comedk or matches_mba or matches_mca):
-                continue
+        if sq_upper:
+            # Strictly match KEA / KCET Code if user enters an E-code (e.g. E001, E002, E003, E057, E158)
+            if sq_upper.startswith("E") and len(sq_upper) >= 3:
+                is_kcet_match = c["kcet_code"].upper() == sq_upper
+                is_comedk_match = c.get("comedk_code", "").upper() == sq_upper
+                if not (is_kcet_match or is_comedk_match):
+                    continue
+            else:
+                matches_name = sq_lower in c["name"].lower() or sq_lower in c["short_name"].lower() or sq_lower in c["id"].lower() or sq_lower in c["location"].lower()
+                matches_kcet = sq_upper == c["kcet_code"].upper()
+                if not (matches_name or matches_kcet):
+                    continue
 
         base_cutoff = c["cutoffs"].get(category, c["kcet_cse_cutoff"])
         branch_cutoff = int(base_cutoff * mult)
@@ -190,8 +197,10 @@ def get_karnataka_college_recommendations(
             "match_score": round(prob_score, 1)
         })
         
-    results.sort(key=lambda x: x["match_score"], reverse=True)
+    # Rank colleges strictly by NIRF Rank & Admission Status
+    results.sort(key=lambda x: (x["nirf_rank"], -x["match_score"]))
     return results
 
 if __name__ == "__main__":
-    print(get_karnataka_college_recommendations(search_query="E002", preferred_branch="CSE")[0])
+    res = get_karnataka_college_recommendations(search_query="E001")
+    print([r["kcet_code"] + ": " + r["college_name"] for r in res])

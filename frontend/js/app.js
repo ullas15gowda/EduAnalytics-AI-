@@ -261,7 +261,7 @@ function initFormListeners() {
         entrance_rank: parseInt(document.getElementById("rec-rank").value),
         category: document.getElementById("rec-category").value,
         preferred_branch: document.getElementById("rec-branch").value,
-        max_annual_budget: parseFloat(document.getElementById("rec-budget").value)
+        max_annual_budget: 999.0
       };
       const container = document.getElementById("recs-results-container");
       container.innerHTML = "<p class='placeholder-text'><i class='fa-solid fa-spinner fa-spin'></i> Finding best matches\u2026</p>";
@@ -459,7 +459,7 @@ function initKarnatakaListeners() {
         entrance_exam: document.getElementById("kar-exam").value,
         rank: parseInt(document.getElementById("kar-exam-rank").value),
         category: document.getElementById("kar-exam-cat").value,
-        max_budget: parseFloat(document.getElementById("kar-max-budget").value) || 5.0
+        max_budget: 999.0
       };
       const res = await fetch(`${API_BASE}/karnataka/college-guide`, {
         method: "POST", headers: { "Content-Type": "application/json" },
