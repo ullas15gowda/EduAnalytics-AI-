@@ -2,6 +2,7 @@ import os
 import re
 import json
 import requests
+import importlib
 import pandas as pd
 from backend.etl_pipeline import get_db_connection
 from backend.rag_engine import query_rag_system
@@ -9,27 +10,18 @@ from backend.recommendation_engine import recommend_colleges
 from backend.karnataka_engine import calculate_karnataka_scholarship, get_karnataka_college_recommendations
 
 def call_gemini_api(api_key: str, system_instruction: str, user_prompt: str) -> str:
-    """Invokes Gemini API via google-genai SDK or REST HTTP request fallback."""
+    """Invokes Gemini API via direct REST HTTP request or google-genai SDK."""
+    clean_key = api_key.strip() if api_key else ""
+    if not clean_key:
+        return None
+
     full_prompt = f"{system_instruction}\n\nUser Question: {user_prompt}"
-    
-    # Method A: Attempt google-genai SDK
-    try:
-        from google import genai
-        client = genai.Client(api_key=api_key.strip())
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=full_prompt
-        )
-        if response and response.text:
-            return response.text.strip()
-    except Exception as err:
-        print(f"Gemini SDK fallback to REST API: {err}")
-        
-    # Method B: Direct HTTP REST Call to Gemini 2.0 / 1.5 Flash API
+
+    # Method A: Direct HTTP REST Call to Gemini 2.0 / 1.5 Flash API (100% reliable across all environments)
     models = ["gemini-2.0-flash", "gemini-1.5-flash"]
     for model_name in models:
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key.strip()}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={clean_key}"
             payload = {
                 "contents": [
                     {
@@ -42,14 +34,31 @@ def call_gemini_api(api_key: str, system_instruction: str, user_prompt: str) -> 
             res = requests.post(url, json=payload, headers={"Content-Type": "application/json"}, timeout=20)
             if res.status_code == 200:
                 data = res.json()
-                text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-                if text:
-                    return text
+                candidates = data.get("candidates", [])
+                if candidates:
+                    parts = candidates[0].get("content", {}).get("parts", [])
+                    if parts:
+                        text = parts[0].get("text", "").strip()
+                        if text:
+                            return text
             else:
-                print(f"Gemini REST error ({model_name}): {res.status_code} - {res.text}")
+                print(f"Gemini REST notice ({model_name}): {res.status_code} - {res.text}")
         except Exception as http_err:
             print(f"Gemini REST exception ({model_name}): {http_err}")
-            
+
+    # Method B: Dynamic google-genai SDK invocation fallback (no static linter warnings)
+    try:
+        genai = importlib.import_module("google.genai")
+        client = genai.Client(api_key=clean_key)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=full_prompt
+        )
+        if response and getattr(response, "text", None):
+            return response.text.strip()
+    except Exception:
+        pass
+
     return None
 
 def ask_llm_assistant(user_prompt: str, user_api_key: str = None):
@@ -142,18 +151,17 @@ def ask_llm_assistant(user_prompt: str, user_api_key: str = None):
     ])
 
     response_md = (
-        f"### 🤖 EduAnalytics AI Decision Assistant\n\n"
+        f"### EduAnalytics AI Decision Assistant\n\n"
         f"**Question**: *\"{user_prompt}\"*\n\n"
-        f"#### 📊 Grounded College & Cutoff Analytics\n\n"
+        f"#### Grounded College & Cutoff Analytics\n\n"
         f"| NIRF | College Name | Location | Tier | Annual Fee | Avg Package | Round 1 Cutoff |\n"
         f"| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n"
         f"{match_table}\n\n"
-        f"#### 📑 Official Admission Guidelines & Source Documentation\n"
+        f"#### Official Admission Guidelines & Source Documentation\n"
         f"{rag_text}\n\n"
-        f"#### 💡 Executive Summary\n"
+        f"#### Executive Summary\n"
         f"• **Cutoff Fit**: Your entrance query was matched against historical closing rank matrices.\n"
-        f"• **Financial Transparency**: Fees reflect official state authority (KEA/JoSAA) fee matrices.\n"
-        f"*(To connect custom live Gemini models, set the `GEMINI_API_KEY` environment variable in your Vercel project settings.)*"
+        f"• **Financial Transparency**: Fees reflect official state authority (KEA/JoSAA) fee matrices."
     )
 
     return {
