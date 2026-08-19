@@ -86,15 +86,16 @@ def ask_llm_assistant(user_prompt: str, user_api_key: str = None):
         try:
             from openai import OpenAI
             client = OpenAI(api_key=openai_key.strip())
-            model_name = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
-            response = client.responses.create(
+            model_name = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+            response = client.chat.completions.create(
                 model=model_name,
-                instructions=system_instruction,
-                input=f"User question: {user_prompt}",
-                max_output_tokens=800,
-                store=False
+                messages=[
+                    {"role": "system", "content": system_instruction},
+                    {"role": "user", "content": f"User question: {user_prompt}"}
+                ],
+                max_tokens=800
             )
-            openai_answer = response.output_text.strip()
+            openai_answer = response.choices[0].message.content.strip()
             if openai_answer:
                 return {
                     "intent": "openai_grounded_response",
