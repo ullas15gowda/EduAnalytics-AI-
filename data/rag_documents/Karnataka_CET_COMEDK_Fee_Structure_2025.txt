@@ -1,13 +1,37 @@
-KARNATAKA ENGINEERING COLLEGE ADMISSION & SCHOLARSHIP NORMS 2025
+KARNATAKA EXAMINATIONS AUTHORITY (KEA) ENGINEERING ADMISSION & SCHOLARSHIP NORMS 2025
+Official KEA Portal: https://cetonline.karnataka.gov.in/kea/
 
-1. FEE REGULATION (KEA & COMEDK):
-- Government Seats (KEA CET): Tuition fee regulated at INR 75,000 to INR 1,15,000 per annum depending on college type.
-- Management/COMEDK Seats: Quota tuition fee ranges between INR 2,20,000 and INR 3,50,000 per annum for top institutions like RVCE, BMSCE, and MSRIT.
-- Hostel & Mess Charges: Range between INR 85,000 and INR 1,40,000 per annum across Bengaluru colleges.
+1. KEA SEAT ALLOCATION & COUNSELLING PROCESS:
+- Official Portal: KEA conducts Karnataka Common Entrance Test (KCET) engineering seat matrix allocation at https://cetonline.karnataka.gov.in/kea/
+- Counselling Rounds: Mock Allotment -> Round 1 Seat Allotment -> Choice Entry (Choice 1/2/3/4) -> Round 2 Allotment -> Extended Round / Casual Vacancy Round.
+- Document Verification: Helpline center verification slip is mandatory. Required documents include SSLC mark sheet, 2nd PUC / 12th Marks Card, Study Certificate (7 Years in Karnataka), Caste / Income Certificate (RD Number), Rural & Kannada Medium certificates (if applicable), and Article 371(J) Hyderabad-Karnataka reservation certificate.
 
-2. TUITION FEE WAIVER (TFW) SCHEME:
-Under AICTE guidelines, 5% supernumerary seats are reserved in every branch for meritorious students whose parental income is below INR 8.0 Lakhs per annum. TFW waives 100% tuition fees.
+2. KEA FEE MATRIX & REGULATION (KCET / COMEDK):
+- KEA Government Seats: Tuition fee regulated at INR 45,000/year (Govt Colleges like UVCE E002) to INR 1,05,000 - 1,12,000/year (Aided & Private Autonomous like RVCE E001, BMSCE E003, MSRIT E005, SJCE E057).
+- COMEDK Quota Seats: Tuition fee ranges between INR 2,10,000 and INR 2,64,000 per annum for top Bengaluru / Mysuru institutions.
+- Management Quota: Institutional fees range from INR 3,20,000 to INR 6,50,000 per annum.
+- Hostel & Mess Charges: Range between INR 85,000 and INR 1,35,000 per annum.
 
-3. SCHOLARSHIPS:
-- SSP (State Scholarship Portal): Full tuition fee reimbursement for SC/ST/OBC category students.
-- Fee Concession for Rural & Kannada Medium candidates meeting eligibility cutoffs.
+3. STATE SCHOLARSHIP PORTAL (SSP) & TUITION FEE WAIVER (TFW):
+- AICTE Tuition Fee Waiver (TFW): 5% supernumerary seats in every KEA engineering branch for rank holders with family income <= INR 8.0 Lakhs/year. Provides 100% waiver of tuition fee.
+- SSP SC/ST Scholarship: 100% tuition fee reimbursement for SC/ST students with family income <= INR 2.5 Lakhs/year via Social Welfare Department.
+- SSP BCWD Fee Concession (E-Pass): Fee concession for OBC (2A, 2B, 3A, 3B, Cat-1) candidates with family income <= INR 2.5 Lakhs/year.
+- Vidyasiri Scheme: Maintenance allowance of INR 15,000/year for hostelers residing in BCWD managed or recognized private hostels.
+
+4. TOP KEA COLLEGE CODES & INSTITUTES:
+- E001: RV College of Engineering (RVCE), Bengaluru
+- E002: University Visvesvaraya College of Engineering (UVCE), Bengaluru
+- E003: BMS College of Engineering (BMSCE), Bengaluru
+- E005: MS Ramaiah Institute of Technology (MSRIT), Bengaluru
+- E008: Bangalore Institute of Technology (BIT), Bengaluru
+- E014: Dayananda Sagar College of Engineering (DSCE), Bengaluru
+- E016: PES University (RR Campus), Bengaluru
+- E030: Siddaganga Institute of Technology (SIT), Tumakuru
+- E031: KLE Technological University (BVB), Hubballi
+- E039: KLS Gogte Institute of Technology (GIT), Belagavi
+- E056: The National Institute of Engineering (NIE), Mysuru
+- E057: Sri Jayachamarajendra College of Engineering (SJCE / JSS STU), Mysuru
+- E086: Acharya Institute of Technology, Bengaluru
+- E092: BMS Institute of Technology & Management (BMSIT), Bengaluru
+- E158: Maharaja Institute of Technology Mysore (MIT Mysore)
+- E258: Maharaja Institute of Technology Thandavapura (MITT)
