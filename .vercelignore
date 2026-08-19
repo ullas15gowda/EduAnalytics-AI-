@@ -1,0 +1,13 @@
+.venv
+.git
+.gitignore
+*.log
+__pycache__
+*.pyc
+data/raw_college_data.csv
+data/cutoffs_data.csv
+data/student_outcomes.csv
+data/cleaned_college_data.csv
+backend/flask_app.py
+server.err.log
+server.out.log
